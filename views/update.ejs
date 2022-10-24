@@ -1,0 +1,12 @@
+<form action="/board/update/callback" method="post">
+	<input type="hidden" name="id" value="<%= id %>">
+	<div id="articleInfo">
+		<p id="atcTitle"><input id="atcTT" type="text" placeholder="제목" name="title" value="<%= post[0].title %>" spellcheck="false"></p>
+	</div>
+	<div id="article">
+		<p id="atcMain"><textarea id="atcMT" placeholder="글" name="article" spellcheck="false"><%= post[0].article %></textarea></p>
+	</div>
+	<p>
+		<input type="submit" value="제출" class="cudBtn">
+	</p>
+</form>

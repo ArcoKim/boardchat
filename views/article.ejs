@@ -1,0 +1,40 @@
+<div id="articleInfo" style="display:flex;">
+	<div id="info">
+		<p id="atcTitle"><%= post.title %></p>
+		<p id="atcName"><%= post.author_id %></p>
+		<p id="atcDate"><%= post.created %></p>
+	</div>
+	<div id="atcBtn">
+		<button class="cudBtn cAndU" id="edit" onclick="location.href = '/board/update/<%= id %>';">수정</button>
+		<form action="/board/delete" method="post" class="delete" onsubmit="if (!confirm('삭제하시겠습니까?')) return false;">
+			<input type="hidden" name="id" value="<%= id %>">
+			<input type="submit" value="삭제" class="cudBtn">
+		</form>
+	</div>
+</div>
+<div id="article">
+	<p id="atcMain"><%- post.article %></p>
+</div>
+<div id="comments">
+	<form action="/comment/create" method="post" id="commentForm">
+		<input type="hidden" name="id" value="<%= id %>">
+		<textarea name="comment" placeholder="댓글을 입력해주세요." id="comment" spellcheck="false" required></textarea>
+		<input type="submit" value="등록" class="cudBtn" id="commentBtn">
+	</form>
+	<% comments.forEach(cmt => { %>
+		<div class="commentDiv">
+			<div class="nameAndCmt">
+				<span class="cmtName"><%= cmt.author_id %></span>
+				<span><%- cmt.comment %></span>
+			</div>
+			<div class="dateAndBtn">
+				<span class="cmtDate"><%= cmt.created %></span>
+				<button class="cudBtn cAndU" onclick="location.href = '/comment/update/<%= cmt.id %>';">수정</button>
+				<form action="/comment/delete" method="post" class="delete" onsubmit="if (!confirm('삭제하시겠습니까?')) return false;">
+					<input type="hidden" name="id" value="<%= cmt.id %>">
+					<input type="submit" value="삭제" class="cudBtn">
+				</form>
+			</div>
+		</div>
+	<% }); %>
+</div>

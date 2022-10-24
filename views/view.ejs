@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+	<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+		<link rel="stylesheet" href="/css/style.css">
+		<title>보드챗</title>
+	</head>
+	<body>
+		<div id="topBar">
+			<i class="fas fa-bars" id="hamburger" onclick="hamburger();"></i>
+			<a href="/" id="title">보드챗</a>
+			<div id="infoBar">
+			<% if (user) { %>
+				<a href="/mypage" id="nickname"><%= user[0].nickname %></a>
+				<button class="cudBtn" id="logout" onclick="location.href = '/info/logout';">로그아웃</button>
+			<% } else { %>
+				<button class="cudBtn" id="login" onclick="location.href = '/info/login';">로그인</button>
+				<button class="cudBtn" id="register" onclick="location.href = '/info/register';">회원가입</button>
+			<% } %>
+			</div>
+		</div>
+		<div id="mainBoard">
+			<div id="menuBar">
+				<a href="/board/1">
+					<div class="menuBox">
+						<p class="boards">공지사항</p>
+					</div>
+				</a>
+				<a href="/board/2">
+					<div class="menuBox">
+						<p class="boards">자유게시판</p>
+					</div>
+				</a>
+				<a href="/chat">
+					<div class="menuBox">
+						<p class="boards">채팅</p>
+					</div>
+				</a>
+			</div>
+			<div id="boardInfo">
+				<div id="detail" class="contents">
+					<%- include(code, next); %>
+				</div>
+				<div id="devDiv">
+					<p id="developer">Copyright 2021. Arco All Rights Reserved.</p>
+				</div>
+			</div>
+		</div>
+		<script>
+			let menu = document.getElementById('menuBar');
+			let mainBoard = document.getElementById('mainBoard');
+			if (window.getComputedStyle(menu).display === 'none') {
+				mainBoard.style.display = 'block';
+			}
+			window.matchMedia("(max-width:1023px)").addEventListener('change', function(e) {
+				if (e.matches) {
+					menu.style.display = 'none';
+					mainBoard.style.display = 'block';
+				} else {
+					menu.style.display = 'block';
+					mainBoard.style.display = 'grid';
+				}
+			});
+			function hamburger() {
+				if (window.getComputedStyle(menu).display === 'none') {
+					menu.style.display = 'block';
+				} else {
+					menu.style.display = 'none';
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<p class="bName"><%= board.name %></p>
+<p class="bDesc"><%= board.description %></p>
+<table id="boardContents">
+	<tr>
+		<th class="boardTh">순번</th>
+		<th class="boardTh">제목</th>
+		<th class="boardTh">작성자</th>
+		<th class="boardTh">작성일</th>
+	</tr>
+	<% posts.forEach(post => { %>
+		<tr class="boardTr" onclick="location.href = '/board/article/<%= post.id %>'">
+			<td class="boardTd"><%= post.id %></td>
+			<td class="boardTd noAlign"><%= post.title %></td>
+			<td class="boardTd"><%= post.author_id %></posts></td>
+			<td class="boardTd"><%= post.created %></td>
+		</tr>
+	<% }); %>
+</table>
+<div id="boardBtn">
+	<button class="cudBtn cAndU" onclick="location.href = '/board/create/<%= id %>';">글 쓰기</button>
+</div>
+<div id="pages">
+	<% if (nIncI > 1) { %>
+		<a href="?page=<%= nIncI-1 %>" class="page">이전</a>
+	<% } %>
+	<% let i; %>
+	<% for(i = nIncI; i < nIncI + 10 && i <= Math.ceil(len / 15); i++) { %>
+		<a href="?page=<%= i %>" class="page"><%= i %></a>
+	<% } %>
+	<% if (i <= Math.ceil(len / 15)) { %>
+		<a href="?page=<%= i %>" class="page">다음</a>
+	<% } %>
+</div>
