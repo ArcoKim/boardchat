@@ -1,0 +1,40 @@
+<p class="bName">개인 면담실</p>
+<div class="shadow-box boxChatCls" id="boxChat">
+	<ul id="messages"></ul>
+</div>
+<form class="sendFormCls" id="sendForm" action="">
+	<input type="text" id="msgInput" autocomplete="off" />
+	<input type="submit" id="msgSend" value="전송" />
+</form>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+	let socket = io();
+	let div = document.getElementById('boxChat');
+	let input = document.getElementById('msgInput');
+	let messages = document.getElementById('messages');
+
+	document.getElementById('sendForm').addEventListener('submit', function(e) {
+		e.preventDefault();
+		<% if (user) { %>
+		if (input.value) {
+			let msgUser = "<span style='color:blue;'>[<%= user[0].nickname %>]</span> ";
+			socket.emit('sendSR', [msgUser, input.value, '<%= code %>']);
+			input.value = '';
+		}
+		<% } else { %>
+		alert('로그인을 해주세요.');
+		<% } %>
+	});
+
+	function send(msg) {
+		var item = document.createElement('li');
+		item.innerHTML = msg[0] + msg[1];
+		messages.appendChild(item);
+		div.scrollTop = div.scrollHeight;
+	}
+	
+	socket.emit('createJoin', '<%= code %>');
+	socket.on('sendCR', function(msg) {
+		send(msg);
+	});
+</script>

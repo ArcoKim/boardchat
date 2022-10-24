@@ -1,0 +1,50 @@
+<p class="bName">전체 채팅</p>
+<div class="shadow-box boxChatCls" id="boxChat">
+	<ul id="messages"></ul>
+</div>
+<form class="sendFormCls" id="sendForm" action="">
+	<input type="text" id="msgInput" autocomplete="off" />
+	<input type="submit" id="msgSend" value="전송" />
+</form>
+<p class="bName">개인 면담</p>
+<form action="/chat" method="get" id="allChat">
+	<input type="text" name="code" placeholder="지정 코드" required>
+	<input type="submit" class="cudBtn" value="방 생성 및 가입">
+</form>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+	let socket = io();
+	let div = document.getElementById('boxChat');
+	let input = document.getElementById('msgInput');
+	let messages = document.getElementById('messages');
+
+	document.getElementById('sendForm').addEventListener('submit', function(e) {
+		e.preventDefault();
+		<% if (user) { %>
+		if (input.value) {
+			let msgUser = "<span style='color:blue;'>[<%= user[0].nickname %>]</span> ";
+			socket.emit('sendS', [msgUser, input.value]);
+			input.value = '';
+		}
+		<% } else { %>
+		alert('로그인을 해주세요.');
+		<% } %>
+	});
+
+	function send(msg) {
+		var item = document.createElement('li');
+		item.innerHTML = msg[0] + msg[1];
+		messages.appendChild(item);
+		div.scrollTop = div.scrollHeight;
+	}
+	
+	document.getElementById('allChat').addEventListener('submit', function(e) {
+		<% if (!user) { %>
+		e.preventDefault();
+		alert('로그인을 해주세요.');
+		<% } %>
+	});
+	socket.on('sendC', function(msg) {
+		send(msg);
+	});
+</script>

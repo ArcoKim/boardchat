@@ -1,0 +1,509 @@
+@font-face {
+	font-family: 'S-Core Dream 5';
+	src: url('../fonts/S-CoreDream-5Medium.woff2') format('woff2'),
+			url('../fonts/S-CoreDream-5Medium.woff') format('woff');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'S-Core Dream 3';
+	src: url('../fonts/S-CoreDream-3Light.woff2') format('woff2'),
+			url('../fonts/S-CoreDream-3Light.woff') format('woff');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'S-Core Dream 4';
+	src: url('../fonts/S-CoreDream-4Regular.woff2') format('woff2'),
+			url('../fonts/S-CoreDream-4Regular.woff') format('woff');
+	font-weight: 200;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'S-Core Dream 8';
+	src: url('../fonts/S-CoreDream-8Heavy.woff2') format('woff2'),
+			url('../fonts/S-CoreDream-8Heavy.woff') format('woff');
+	font-weight: 800;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'S-Core Dream 6';
+	src: url('../fonts/S-CoreDream-6Bold.woff2') format('woff2'),
+			url('../fonts/S-CoreDream-6Bold.woff') format('woff');
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+html, body {
+	margin: 0;
+	height: 100%;
+}
+body {
+	display: grid;
+	grid-template-rows: 1fr 8fr;
+}
+a {
+	text-decoration: none;
+}
+#topBar {
+	display: flex;
+	justify-content: space-around;
+	border-bottom: 1px solid black;
+	background-color: dodgerblue;
+}
+#title {
+	align-self: center;
+	font-family: 'S-Core Dream 6';
+	font-size: 50px;
+	color: black;
+	margin: 10px 0;
+}
+#infoBar {
+	margin-top: 5px;
+}
+#mainBoard {
+	position: relative;
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+}
+#menuBar {
+	display: block;
+	padding: 0 20px;
+	border-right: 1px solid black;
+	background-color: white;
+	height: 100%;
+	z-index: 999
+}
+.menuBox {
+	text-align: center;
+	background-color: blue;
+}
+.boards {
+	font-family: 'S-Core Dream 6';
+	font-size: 30px;
+	color: black;
+}
+.contents {
+	margin-left: 20px;
+	width: 70%;
+}
+.bName {
+	font-family: 'S-Core Dream 5';
+	font-size: 36px;
+	margin: 20px 20px 0 0;
+}
+.bDesc {
+	font-family: 'S-Core Dream 4';
+	font-size: 20px;
+}
+#devDiv {
+	margin-left: 5px;
+}
+#developer {
+	font-family: 'S-Core Dream 3';
+	font-size: 15px;
+}
+#boardContents {
+	width: 100%;
+	border: 1px solid grey;
+	border-collapse: collapse;
+}
+.boardTh {
+	background-color: #f4f6f7;
+}
+.boardTd {
+	text-align: center;
+}
+.noAlign {
+	text-align: left;
+}
+.boardTh, .boardTd {
+	border: 1px solid grey;
+}
+.boardTr {
+	cursor: pointer;
+}
+#articleInfo {
+	background-color: #f4f6f7;
+	border-top: 1px solid black;
+	border-bottom: 1px solid grey;
+	margin-top: 20px;
+}
+#atcTitle {
+	font-weight: bold;
+	font-size: 20px;
+	margin: 15px 0 15px 15px;
+}
+#atcName {
+	margin: 0 0 0 15px;
+}
+#atcDate {
+	margin: 0 0 15px 15px;
+}
+#article {
+	border-bottom: 1px solid black;
+}
+#atcMain {
+	margin-left: 15px;
+}
+#boardBtn {
+	text-align: right;
+	margin-top: 5px;
+}
+.cudBtn {
+	font-family: 'S-Core Dream 3';
+  border: 1px solid dodgerblue;
+	background-color: white;
+  color: dodgerblue;
+  text-decoration: none;
+  font-size: 16px;
+	cursor: pointer;
+}
+#atcBtn {
+	display: flex;
+	margin-top: 5px;
+	margin-left: auto;
+	align-self: center;
+	margin-right: 10px;
+	min-width: 90px;
+}
+#atcTT, #atcMT {
+	width: 95%;
+}
+#atcMT {
+	height: 300px;
+}
+.shadow-box {
+  	position: relative;
+  	width: 700px;
+  	margin-top: 20px;
+  	background: #FFF;
+  	border-radius: 2px;
+  	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+	font-family: 'S-Core Dream 4';
+}
+.boxReg {
+	width: 800px;
+	height: 600px;
+}
+.boxChatCls {
+	position: relative;
+	overflow: scroll;
+	width: 800px;
+	height: 400px;
+}
+.left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 40px;
+  width: 300px;
+  height: 300px;
+}
+.leftn {
+	padding: 40px;
+}
+.left form {
+	width: 300px;
+}
+.loginh1, .outh1 {
+  margin: 0 0 20px 0;
+  font-weight: 300;
+  font-size: 28px;
+}
+.infoTp {
+  display: block;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  padding: 4px;
+  width: 300px;
+  height: 32px;
+  border: none;
+  border-bottom: 1px solid #AAA;
+  font-weight: 400;
+  font-size: 15px;
+  transition: 0.2s ease;
+	font-family: 'S-Core Dream 4';
+}
+.infoTp:focus {
+  border-bottom: 2px solid #16a085;
+  color: #16a085;
+  transition: 0.2s ease;
+}
+.reg {
+	width: 500px;
+}
+.infoSub {
+  width: 120px;
+  height: 32px;
+  background: #16a085;
+  border: none;
+  border-radius: 2px;
+  color: #FFF;
+  font-family: 'S-Core Dream 4';
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: 0.1s ease;
+  cursor: pointer;
+	margin-bottom: 10px;
+}
+#borderReg {
+	margin-top: 10px;
+	border-top: 1px solid #AAA;
+}
+#regBtn {
+	margin-top: 20px;
+}
+.infoSub:hover {
+  opacity: 0.8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+.infoSub:active {
+  opacity: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+.or {
+  position: absolute;
+  top: 150px;
+  left: 370px;
+  width: 40px;
+  height: 40px;
+  background: #DDD;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  line-height: 40px;
+  text-align: center;
+}
+.right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-sizing: border-box;
+  padding: 40px;
+  width: 300px;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0 2px 2px 0;
+}
+.loginwith {
+  display: block;
+  margin-bottom: 40px;
+  font-size: 28px;
+}
+button.social-signin {
+  margin-bottom: 20px;
+  width: 220px;
+  height: 36px;
+  border: none;
+  border-radius: 2px;
+  color: #FFF;
+  font-family: 'S-Core Dream 4';
+  font-weight: 500;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+button.social-signin:hover,
+button.social-signin:focus {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.2s ease;
+}
+button.social-signin:active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.2s ease;
+}
+button.social-signin.facebook {
+  background: #32508E;
+}
+button.social-signin.twitter {
+  background: #55ACEE;
+}
+button.social-signin.google {
+  background: #DD4B39;
+}
+i {
+	margin-right: 10px;
+}
+#nickname {
+	font-family: 'S-Core Dream 4';
+	color: black;
+}
+#mypage {
+	display: inline-block;
+}
+#messages {
+	list-style: none;
+}
+.sendFormCls {
+	width: 800px;
+	background: rgba(0, 0, 0, 0.15); 
+	padding: 0.25rem; 
+	bottom: 10px;
+	display: flex;
+	height: 3rem; 
+	box-sizing: border-box;
+}
+#msgInput { 
+	border: none; 
+	padding: 0 1rem; 
+	flex-grow: 1; 
+	border-radius: 2rem; 
+	margin: 0.25rem; 
+}
+#msgInput:focus { 
+	outline: none; 
+}
+#msgSend {
+	background: #333; 
+	border: none; 
+	padding: 0 1rem; 
+	margin: 0.25rem; 
+	border-radius: 3px; 
+	outline: none; 
+	color: #fff;
+	cursor: pointer;
+}
+.fa-bars {
+	display: none;
+	align-self: center;
+	font-size: 2em;
+	cursor: pointer;
+}
+#commentForm {
+	display: flex;
+	padding-bottom: 10px;
+	border-bottom: 1px solid grey;
+}
+#comments {
+	margin-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid black;
+}
+#comment {
+	width: 85%;
+	height: 50px;
+}
+#commentBtn {
+  border: 1px solid blue;
+	background-color: blueviolet;
+  color: white;
+	width: 10%;
+	margin-left: auto;
+}
+#edit {
+	height: 50%;
+}
+.commentDiv {
+	margin-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid grey;
+	font-family: 'S-Core Dream 4';
+}
+.nameAndCmt, .dateAndBtn {
+	display: flex;
+}
+#commentUpdate {
+	margin-top: 10px;
+	padding: 10px 0;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+.cmtName, .cmtDate {
+	margin-right: 15px;
+}
+.cmtName {
+	color: blue;
+}
+#pages {
+	text-align: center;
+}
+.page {
+	margin-right: 10px;
+	color: black;
+	font-weight: bold;
+}
+.confSuccess {
+	color: green;
+}
+.confFail {
+	color: red;
+}
+.reInput, .chConf {
+	display: none;
+}
+#change-box {
+	height: 300px;
+}
+.outh1 {
+	color: red;
+}
+#out {
+	background-color: red;
+}
+.login-box {
+	height: 300px;
+}
+.outBox {
+	width: 450px;
+	height: 290px;
+}
+#boxChat {
+	margin: 0;
+	margin-top: 20px;
+}
+
+@media (max-width:1023px) {
+	#title {
+		font-size: 40px;
+	}
+	.fa-bars {
+		display: inline;
+	}
+	#menuBar {
+		display: none;
+		position: absolute;
+		width: 200px;
+	}
+	#detail {
+		width: 90%;
+	}
+	#mainBoard {
+		display: block;
+	}
+	.shadow-box {
+		margin: 0 auto;
+		margin-top: 20px;
+	}
+	.shadow-box, .sendFormCls {
+		width: 90%;
+	}
+	.login-box {
+		height: 600px;
+	}
+	#postit, .reg, .infoTp, .left,
+	#localForm, .right, .right button {
+		width: 100%
+	}
+	#postit {
+		max-width: 640px;
+	}
+	.or {
+		top: 290px;
+		left: 50px;
+	}
+	.right {
+		top: 335px;
+		left: 0;
+	}
+	#privacy, #regBtn {
+		margin-top: 10px;
+	}
+}

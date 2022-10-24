@@ -1,0 +1,25 @@
+<!-- Copyright (c) 2021 by KovJonas (https://codepen.io/KovJonas/pen/BoPOPY)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.-->
+
+<div class="shadow-box login-box">
+	<div class="left">
+		<h1 class="loginh1">게시판 로그인</h1>
+		<p style="color:red;"><%= error %></p>
+		<form action="/info/login/local" method="post" id="localForm">
+			<input type="text" name="id" placeholder="아이디" class="infoTp" required />
+			<input type="password" name="pw" placeholder="비밀번호" class="infoTp" required />
+			<input type="submit" name="signup_submit" value="로그인" class="infoSub" required />
+		</form>
+	</div>
+	<div class="right">
+		<span class="loginwith">SNS 로그인</span>
+		<button class="social-signin facebook" id="facebookLogin" onclick="location.href = '/info/login/facebook';"><i class="fab fa-facebook-f"></i>Facebook으로 로그인</button>
+		<button class="social-signin google" id="googleLogin" onclick="location.href = '/info/login/google';"><i class="fab fa-google"></i>Google로 로그인</button>
+	</div>
+	<div class="or">혹은</div>
+</div>

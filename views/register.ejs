@@ -1,0 +1,77 @@
+<!-- Copyright (c) 2021 by KovJonas (https://codepen.io/KovJonas/pen/BoPOPY)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.-->
+
+<div class="shadow-box boxReg">
+	<div class="leftn">
+		<h1 class="loginh1">회원가입</h1>
+		<p style="color:red;"><%= error %></p>
+		<form action="/info/register/callback" method="post" onsubmit="return submitCf();">
+			<input type="text" name="id" placeholder="아이디" value="<%= flash.id %>" class="infoTp reg" id="useridtxt" required />
+			<div id="useridConf">
+				<button type="button" class="infoSub conf" id="cfuserid" onclick="infoCf('userid');">아이디 확인</button>
+				<button type="button" class="infoSub reInput" id="reuserid" onclick="reInput('userid');">재입력</button>
+			</div>
+			<input type="email" name="email" placeholder="이메일" value="<%= flash.email %>" class="infoTp reg" id="emailtxt" pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$' required />
+			<div id="emailConf">
+				<button type="button" class="infoSub conf" id="cfemail" onclick="infoCf('email');">이메일 확인</button>
+				<button type="button" class="infoSub reInput" id="reemail" onclick="reInput('email');">재입력</button>
+			</div>
+			<input type="password" name="pw" placeholder="비밀번호" value="<%= flash.pw %>" class="infoTp reg" required />
+			<input type="password" name="pw2" placeholder="2차 비밀번호" value="<%= flash.pw2 %>" class="infoTp reg" required />
+			<input type="text" name="nickname" placeholder="닉네임" value="<%= flash.nickname %>" class="infoTp reg" id="nicknametxt" required />
+			<div id="nicknameConf">
+				<button type="button" class="infoSub conf" id="cfnickname" onclick="infoCf('nickname');">닉네임 확인</button>
+				<button type="button" class="infoSub reInput" id="renickname" onclick="reInput('nickname');">재입력</button>
+			</div>
+			<div id="borderReg" class="reg">
+				<button type="button" class="infoSub" id="privacy" onclick="window.open('/개인정보처리방침(2022.10.09).html')">개인정보처리방침</button>
+				<input type="submit" name="signup_submit" value="회원가입" class="infoSub" id="regBtn" />
+			</div>
+		</form>
+	</div>
+</div>
+<script>
+	let conf = {'userid':false, 'email':false, 'nickname':false};
+	async function infoCf(code) {
+		let txt = document.getElementById(code+'txt');
+		if (txt.value) {
+			let res = await fetch('/confirm?'+code+'='+txt.value);
+			let result = await res.json();
+			let msgSpan = document.getElementById(code+'Span');
+			if (msgSpan) {
+				msgSpan.parentNode.removeChild(msgSpan);
+			}
+			document.getElementById(code+'Conf').innerHTML += result.msg;
+			conf[code] = result.conf;
+			if (result.conf) {
+				txt.readOnly = true;
+				document.getElementById('cf'+code).style.display = 'none';
+				document.getElementById('re'+code).style.display = 'inline-block';
+			}
+		}
+	}
+	function reInput(code) {
+		conf[code] = false;
+		document.getElementById(code+'txt').readOnly = false;
+		document.getElementById('cf'+code).style.display = 'inline-block';
+		document.getElementById('re'+code).style.display = 'none';
+		let msgSpan = document.getElementById(code+'Span');
+		if (msgSpan) {
+			msgSpan.parentNode.removeChild(msgSpan);
+		}
+	}
+	function submitCf() {
+		for(key in conf) {
+			if (!conf[key]) {
+				alert('정보 확인을 마쳐주세요.');
+				return false;
+			}
+		}
+		return true;
+	}
+</script>

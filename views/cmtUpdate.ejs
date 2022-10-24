@@ -1,0 +1,9 @@
+<form action="/comment/update/callback" method="post">
+	<input type="hidden" name="id" value="<%= id %>">
+	<div id="commentUpdate">
+		<textarea id="atcMT" placeholder="댓글" name="comment" spellcheck="false"><%= post.comment %></textarea>
+	</div>
+	<p>
+		<input type="submit" value="제출" class="cudBtn">
+	</p>
+</form>
