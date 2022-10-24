@@ -1,6 +1,6 @@
-# 카트라이더 붐힐테스트
+# 보드챗
 ## 정보
-- URL : https://boardchat.dothome.co.kr/
+- URL : https://boardchats.herokuapp.com/
 - 완성 날짜 : 2021년
 - 제작자 : ArcoKim (kimjeongtae)
 
