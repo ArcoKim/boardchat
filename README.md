@@ -1,6 +1,6 @@
 # 보드챗
 ## 정보
-- URL : https://boardchats.herokuapp.com/
+- URL : ~~https://boardchats.herokuapp.com/~~
 - 완성 날짜 : 2021년
 - 제작자 : ArcoKim (kimjeongtae)
 
